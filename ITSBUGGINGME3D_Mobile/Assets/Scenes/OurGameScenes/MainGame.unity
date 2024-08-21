@@ -656,6 +656,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 144690006}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &535627586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,8 +768,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aa5b4184b0710b34daefd566375bb869, type: 3}
   - {fileID: 8300000, guid: c2b3919f3d22e4446bd11630f52f4d4d, type: 3}
   - {fileID: 8300000, guid: c60b8e8ffd5fcf4469ae8957001c76e4, type: 3}
-  - {fileID: 8300000, guid: a21040808fa2cdc47b41a68d588b66c5, type: 3}
-  - {fileID: 8300000, guid: 65f187cc7506f1e45981a8ef98024d0e, type: 3}
 --- !u!114 &587561628
 MonoBehaviour:
   m_ObjectHideFlags: 0
