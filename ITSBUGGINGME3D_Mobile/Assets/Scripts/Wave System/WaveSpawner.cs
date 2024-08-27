@@ -7,10 +7,11 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float countdown;
     [SerializeField] private GameObject spawnPoint;
 
-    public Wave[] waves;
     public int currentWaveIndex = 0;
-
+    public Wave[] waves;
+    
     private bool readyToCountDown;
+
     private void Start()
     {
         readyToCountDown = true;
@@ -20,15 +21,17 @@ public class WaveSpawner : MonoBehaviour
             waves[i].enemiesLeft = waves[i].enemies.Length;
         }
     }
+
     private void Update()
     {
-        if (currentWaveIndex >= waves.Length)
+        // Check if waves are configured
+        if (waves.Length == 0)
         {
-            Debug.Log("You survived every wave!");
+            Debug.Log("No waves configured!");
             return;
         }
 
-        if (readyToCountDown == true)
+        if (readyToCountDown)
         {
             countdown -= Time.deltaTime;
         }
@@ -36,19 +39,25 @@ public class WaveSpawner : MonoBehaviour
         if (countdown <= 0)
         {
             readyToCountDown = false;
-
             countdown = waves[currentWaveIndex].timeToNextWave;
-
             StartCoroutine(SpawnWave());
         }
 
+        // Handle wave completion
         if (waves[currentWaveIndex].enemiesLeft == 0)
         {
             readyToCountDown = true;
-            Debug.Log("NEXT WAVE INCOMING!");
+            Debug.Log("WAVE COMPLETED! NEXT WAVE INCOMING!");
             currentWaveIndex++;
+
+            // Reset to first wave for infinite mode
+            if (currentWaveIndex >= waves.Length)
+            {
+                currentWaveIndex = 0; // Reset to first wave
+            }
         }
     }
+
     private IEnumerator SpawnWave()
     {
         if (currentWaveIndex < waves.Length)
